@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace ECommerceApp.Persistence.Repositories
 {
-    public sealed class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
+    public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
     {
         private readonly AppDbContext appDbContext;
         public WriteRepository(AppDbContext appDbContext)

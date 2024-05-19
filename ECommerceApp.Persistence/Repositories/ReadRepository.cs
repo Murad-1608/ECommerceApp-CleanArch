@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace ECommerceApp.Persistence.Repositories
 {
-    public sealed class ReadRepository<T> : IReadRepository<T> where T : BaseEntity
+    public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity
     {
         private readonly AppDbContext appDbContext;
         public ReadRepository(AppDbContext appDbContext)
