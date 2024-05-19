@@ -1,8 +1,8 @@
 ﻿using ECommerceApp.Domain.Entities;
 
-namespace ECommerceApp.Application.Repositories.Product
+namespace ECommerceApp.Application.Repositories
 {
-    public interface IProducyWriteRepository : IWriteRepository<Product>
+    public interface IProductWriteRepository : IWriteRepository<Product>
     {
     }
 }
