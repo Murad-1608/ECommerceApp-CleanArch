@@ -9,7 +9,7 @@ namespace ECommerceApp.Application.Repositories
         bool RemoveRange(List<T> models);
         bool Remove(T model);
         Task<bool> RemoveAsync(string id);
-        Task<bool> UpdateAsync(T model);
+        bool Update(T model);
         Task<int> SaveAsync();
     }
 }

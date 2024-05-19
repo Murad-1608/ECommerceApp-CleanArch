@@ -44,15 +44,13 @@ namespace ECommerceApp.Persistence.Repositories
             EntityEntry entry = Table.Remove(model);
             return entry.State == EntityState.Deleted;
         }
-        public async Task<bool> UpdateAsync(T model)
+        public bool Update(T model)
         {
-            EntityEntry entity = await Table.ExecuteUpdateAsync(model);
+            EntityEntry entity = Table.Update(model);
+            return entity.State == EntityState.Modified;
         }
 
-        public Task<int> SaveAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<int> SaveAsync() => await appDbContext.SaveChangesAsync();
 
 
     }
