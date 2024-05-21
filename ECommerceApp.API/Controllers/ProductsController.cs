@@ -1,9 +1,11 @@
 ﻿using ECommerceApp.Application.Repositories;
+using ECommerceApp.Application.RequestParameters;
 using ECommerceApp.Application.ViewModels.Products;
 using ECommerceApp.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Linq;
 
 namespace ECommerceApp.API.Controllers
 {
@@ -22,9 +24,9 @@ namespace ECommerceApp.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] Pagination pagination)
         {
-            return Ok(_productReadRepository.GetAll(false));
+            return Ok(_productReadRepository.GetAll(false).Take(pagination.Page * pagination.Size).Skip(pagination.Size));
         }
 
         [HttpGet("{id}")]
@@ -35,6 +37,9 @@ namespace ECommerceApp.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateProductViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(new { StatusCode = 400 });
+
             await _productWriteRepository.AddAsync(new Product()
             {
                 Name = viewModel.Name,
