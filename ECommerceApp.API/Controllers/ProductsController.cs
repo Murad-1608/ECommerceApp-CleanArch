@@ -26,7 +26,7 @@ namespace ECommerceApp.API.Controllers
         [HttpGet]
         public IActionResult GetAll([FromQuery] Pagination pagination)
         {
-            return Ok(_productReadRepository.GetAll(false).Take(pagination.Page * pagination.Size).Skip(pagination.Size));
+            return Ok(_productReadRepository.GetAll(false).Skip(pagination.Page * pagination.Size).Take(pagination.Size));
         }
 
         [HttpGet("{id}")]
@@ -69,6 +69,12 @@ namespace ECommerceApp.API.Controllers
             await _productWriteRepository.SaveAsync();
 
             return Ok(new { StatusCode = 200 });
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Test(IFormFile file)
+        {
+            return Ok();
         }
     }
 }
