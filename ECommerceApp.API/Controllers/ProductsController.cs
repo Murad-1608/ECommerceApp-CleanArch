@@ -8,6 +8,9 @@ using System.Net;
 using System.Linq;
 using MediatR;
 using ECommerceApp.Application.Features.Queries.GetAllProduct;
+using ECommerceApp.Application.Features.Commands.CreateProduct;
+using ECommerceApp.Application.Features.Commands.UpdateProduct;
+using ECommerceApp.Application.Features.Commands.DeleteProduct;
 
 namespace ECommerceApp.API.Controllers
 {
@@ -43,38 +46,28 @@ namespace ECommerceApp.API.Controllers
             return Ok(_productReadRepository.GetByIdAsync(id, false));
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateProductViewModel viewModel)
+        public async Task<IActionResult> Create(CreateProductCommandRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(new { StatusCode = 400 });
 
-            await _productWriteRepository.AddAsync(new Product()
-            {
-                Name = viewModel.Name,
-                Stock = viewModel.Stock,
-                Price = viewModel.Price
-            });
-            await _productWriteRepository.SaveAsync();
-            return StatusCode((int)HttpStatusCode.Created);
+            var response = await _mediator.Send(request);
+
+            return Ok(response.Message);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateProductViewModel viewModel)
+        public async Task<IActionResult> Update(UpdateProductCommandRequest request)
         {
-            Product product = await _productReadRepository.GetByIdAsync(viewModel.Id);
-            product.Name = viewModel.Name;
-            product.Stock = viewModel.Stock;
-            product.Price = viewModel.Price;
-            await _productWriteRepository.SaveAsync();
+            var response = await _mediator.Send(request);
 
             return Ok(new { StatusCode = 200 });
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(DeleteProductCommandRequest request)
         {
-            await _productWriteRepository.RemoveAsync(id);
-            await _productWriteRepository.SaveAsync();
+            var response = await _mediator.Send(request);
 
             return Ok(new { StatusCode = 200 });
         }
