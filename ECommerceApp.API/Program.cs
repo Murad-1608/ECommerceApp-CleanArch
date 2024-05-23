@@ -1,3 +1,4 @@
+using ECommerceApp.Application;
 using ECommerceApp.Application.Validators.Products;
 using ECommerceApp.Infrastructure;
 using ECommerceApp.Infrastructure.Enums;
@@ -14,7 +15,7 @@ builder.Services?.AddControllers(opt => opt.Filters.Add<ValidationFilter>()).
                  ConfigureApiBehaviorOptions(opt => opt.SuppressModelStateInvalidFilter = true);
 
 builder.Services.AddStorage(StorageType.Local);
-
+builder.Services.AddApplicationService();
 builder.Services.AddPersistenceServices();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

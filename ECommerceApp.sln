@@ -5,19 +5,19 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5FD7C65D-09B5-46FD-9601-1937F66810D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceApp.Domain", "ECommerceApp.Domain\ECommerceApp.Domain.csproj", "{47B62CBE-D05B-4BEB-9655-3031B49D8A8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApp.Domain", "ECommerceApp.Domain\ECommerceApp.Domain.csproj", "{47B62CBE-D05B-4BEB-9655-3031B49D8A8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceApp.Application", "ECommerceApp.Application\ECommerceApp.Application.csproj", "{0FA25E11-3458-4907-8ECD-86CEFC0F84A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApp.Application", "ECommerceApp.Application\ECommerceApp.Application.csproj", "{0FA25E11-3458-4907-8ECD-86CEFC0F84A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D09A1FBF-5F9D-42DC-9269-760D00195DE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceApp.Infrastructure", "ECommerceApp.Infrastructure\ECommerceApp.Infrastructure.csproj", "{F0CC8773-FF2C-4533-8C5C-0700E98103DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApp.Infrastructure", "ECommerceApp.Infrastructure\ECommerceApp.Infrastructure.csproj", "{F0CC8773-FF2C-4533-8C5C-0700E98103DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F47D8B55-9069-483A-B726-42C10C5B336D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceApp.API", "ECommerceApp.API\ECommerceApp.API.csproj", "{857A5421-B3C2-4F47-9799-1A592A71C31F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApp.API", "ECommerceApp.API\ECommerceApp.API.csproj", "{857A5421-B3C2-4F47-9799-1A592A71C31F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerceApp.Persistence", "ECommerceApp.Persistence\ECommerceApp.Persistence.csproj", "{36BB1B66-C9B7-45B9-A6AB-2511B280CF59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerceApp.Persistence", "ECommerceApp.Persistence\ECommerceApp.Persistence.csproj", "{36BB1B66-C9B7-45B9-A6AB-2511B280CF59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

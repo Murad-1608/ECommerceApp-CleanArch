@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Linq;
+using MediatR;
+using ECommerceApp.Application.Features.Queries.GetAllProduct;
 
 namespace ECommerceApp.API.Controllers
 {
@@ -15,18 +17,24 @@ namespace ECommerceApp.API.Controllers
     {
         private readonly IProductReadRepository _productReadRepository;
         private readonly IProductWriteRepository _productWriteRepository;
+        IMediator _mediator;
 
         public ProductsController(IProductWriteRepository productWriteRepository,
-                                  IProductReadRepository productReadRepository)
+                                  IProductReadRepository productReadRepository,
+                                  IMediator mediator)
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public IActionResult GetAll([FromQuery] Pagination pagination)
+        public async Task<IActionResult> GetAll(GetAllProductQueryRequest getAllProductQueryRequest)
         {
-            return Ok(_productReadRepository.GetAll(false).Skip(pagination.Page * pagination.Size).Take(pagination.Size));
+            var response = await _mediator.Send(getAllProductQueryRequest);
+
+            return Ok(response);
+
         }
 
         [HttpGet("{id}")]
