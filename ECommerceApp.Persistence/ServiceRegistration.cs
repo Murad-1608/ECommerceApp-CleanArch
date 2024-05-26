@@ -1,4 +1,5 @@
 ﻿using ECommerceApp.Application.Repositories;
+using ECommerceApp.Domain.Entities.Identity;
 using ECommerceApp.Persistence.Contexts;
 using ECommerceApp.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace ECommerceApp.Persistence
         {
             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ECommerceDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
 
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
             services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
             services.AddScoped<IOrderReadRepository, OrderReadRepository>();
