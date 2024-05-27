@@ -18,9 +18,4 @@
     <ProjectReference Include="..\ECommerceApp.Domain\ECommerceApp.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Commands\AppUser\DeleteUser\" />
-    <Folder Include="Features\Commands\AppUser\UpdateUser\" />
-  </ItemGroup>
-
 </Project>
