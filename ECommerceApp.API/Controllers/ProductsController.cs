@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Linq;
 using MediatR;
-using ECommerceApp.Application.Features.Queries.GetAllProduct;
-using ECommerceApp.Application.Features.Commands.CreateProduct;
-using ECommerceApp.Application.Features.Commands.UpdateProduct;
-using ECommerceApp.Application.Features.Commands.DeleteProduct;
+using ECommerceApp.Application.Features.Commands.ProductCommands.CreateProduct;
+using ECommerceApp.Application.Features.Commands.ProductCommands.DeleteProduct;
+using ECommerceApp.Application.Features.Commands.ProductCommands.UpdateProduct;
+using ECommerceApp.Application.Features.Queries.ProductQueries.GetAllProduct;
 
 namespace ECommerceApp.API.Controllers
 {

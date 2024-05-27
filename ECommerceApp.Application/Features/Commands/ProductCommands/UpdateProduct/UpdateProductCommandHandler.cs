@@ -2,7 +2,7 @@
 using ECommerceApp.Domain.Entities;
 using MediatR;
 
-namespace ECommerceApp.Application.Features.Commands.UpdateProduct
+namespace ECommerceApp.Application.Features.Commands.ProductCommands.UpdateProduct
 {
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest, UpdateProductCommandResponse>
     {
