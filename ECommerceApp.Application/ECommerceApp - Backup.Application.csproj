@@ -19,8 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\AppUser\DeleteUser\" />
-    <Folder Include="Features\Commands\AppUser\UpdateUser\" />
+    <Folder Include="Features\Commands\AppUser\" />
   </ItemGroup>
 
 </Project>
