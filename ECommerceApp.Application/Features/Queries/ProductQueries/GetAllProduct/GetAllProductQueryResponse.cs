@@ -1,6 +1,6 @@
 ﻿using ECommerceApp.Domain.Entities;
 
-namespace ECommerceApp.Application.Features.Queries.GetAllProduct
+namespace ECommerceApp.Application.Features.Queries.ProductQueries.GetAllProduct
 {
     public sealed class GetAllProductQueryResponse
     {

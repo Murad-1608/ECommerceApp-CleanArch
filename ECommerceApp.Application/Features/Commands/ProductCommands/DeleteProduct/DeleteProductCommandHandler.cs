@@ -1,7 +1,7 @@
 ﻿using ECommerceApp.Application.Repositories;
 using MediatR;
 
-namespace ECommerceApp.Application.Features.Commands.DeleteProduct
+namespace ECommerceApp.Application.Features.Commands.ProductCommands.DeleteProduct
 {
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest, DeleteProductCommandResponse>
     {

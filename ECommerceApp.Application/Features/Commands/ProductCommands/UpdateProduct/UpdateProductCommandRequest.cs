@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace ECommerceApp.Application.Features.Commands.UpdateProduct
+namespace ECommerceApp.Application.Features.Commands.ProductCommands.UpdateProduct
 {
     public class UpdateProductCommandRequest : IRequest<UpdateProductCommandResponse>
     {
