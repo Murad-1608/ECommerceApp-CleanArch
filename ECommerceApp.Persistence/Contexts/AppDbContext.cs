@@ -1,11 +1,12 @@
 ﻿using ECommerceApp.Domain.Entities;
 using ECommerceApp.Domain.Entities.Common;
+using ECommerceApp.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceApp.Persistence.Contexts
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         { }

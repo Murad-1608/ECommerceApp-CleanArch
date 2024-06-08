@@ -2,5 +2,7 @@
 {
     public class CreateUserCommandResponse
     {
+        public bool Successeded { get; set; }
+        public string Message { get; set; }
     }
 }

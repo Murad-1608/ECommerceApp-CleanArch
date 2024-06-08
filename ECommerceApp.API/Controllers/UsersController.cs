@@ -12,14 +12,22 @@ namespace ECommerceApp.API.Controllers
         private readonly IMediator _mediator;
         public UsersController(IMediator mediator)
         {
+            
             _mediator = mediator;
         }
 
+        [HttpPost("[action]")]
         public async Task<IActionResult> Create(CreateUserCommandRequest request)
         {
             var response = await _mediator.Send(request);
 
-            return Ok(new { StatusCode = 200 });
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login()
+        {
+            return Ok();
         }
     }
 }
