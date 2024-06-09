@@ -11,8 +11,7 @@ namespace ECommerceApp.API.Controllers
     {
         private readonly IMediator _mediator;
         public UsersController(IMediator mediator)
-        {
-            
+        {            
             _mediator = mediator;
         }
 
