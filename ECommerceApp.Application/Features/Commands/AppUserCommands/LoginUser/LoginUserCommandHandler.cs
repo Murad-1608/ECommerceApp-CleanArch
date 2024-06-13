@@ -29,9 +29,6 @@ namespace ECommerceApp.Application.Features.Commands.AppUserCommands.LoginUser
             var check = await signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             if (check.Succeeded)
-
-
-
                 throw new NotImplementedException();
         }
     }
