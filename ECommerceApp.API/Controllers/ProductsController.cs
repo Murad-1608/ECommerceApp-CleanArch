@@ -11,11 +11,13 @@ using ECommerceApp.Application.Features.Commands.ProductCommands.CreateProduct;
 using ECommerceApp.Application.Features.Commands.ProductCommands.DeleteProduct;
 using ECommerceApp.Application.Features.Commands.ProductCommands.UpdateProduct;
 using ECommerceApp.Application.Features.Queries.ProductQueries.GetAllProduct;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerceApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Admin")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductReadRepository _productReadRepository;
@@ -32,9 +34,9 @@ namespace ECommerceApp.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll(GetAllProductQueryRequest getAllProductQueryRequest)
+        public async Task<IActionResult> GetAll()
         {
-            var response = await _mediator.Send(getAllProductQueryRequest);
+            var response = await _mediator.Send(new GetAllProductQueryRequest());
 
             return Ok(response);
 

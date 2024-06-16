@@ -5,6 +5,7 @@ using ECommerceApp.Infrastructure.Enums;
 using ECommerceApp.Infrastructure.Filters;
 using ECommerceApp.Persistence;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -24,7 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTokenService();
 
-builder.Services.AddAuthentication("Admin").AddJwtBearer(opt =>
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer("Admin", opt =>
 {
     opt.TokenValidationParameters = new()
     {
@@ -35,7 +36,7 @@ builder.Services.AddAuthentication("Admin").AddJwtBearer(opt =>
 
         ValidIssuer = builder.Configuration["Token:Issuer"],
         ValidAudience = builder.Configuration["Token:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"])) 
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"]))
     };
 });
 

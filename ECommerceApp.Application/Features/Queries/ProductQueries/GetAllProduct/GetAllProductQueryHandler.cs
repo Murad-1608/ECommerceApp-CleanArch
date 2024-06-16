@@ -14,7 +14,7 @@ namespace ECommerceApp.Application.Features.Queries.ProductQueries.GetAllProduct
 
         public async Task<GetAllProductQueryResponse> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
         {
-            var values = _productReadRepository.GetAll(false).Skip(request.Page * request.Size).Take(request.Size);
+            var values = _productReadRepository.GetAll(false);
 
             return new GetAllProductQueryResponse() { Products = values.ToList() };
         }

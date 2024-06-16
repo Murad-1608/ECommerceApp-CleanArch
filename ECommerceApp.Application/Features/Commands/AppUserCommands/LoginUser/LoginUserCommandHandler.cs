@@ -35,7 +35,7 @@ namespace ECommerceApp.Application.Features.Commands.AppUserCommands.LoginUser
 
             if (check.Succeeded)
             {
-                TokenDTO token = _tokenHandler.CreateAccessToken(5);
+                TokenDTO token = _tokenHandler.CreateAccessToken(60);
 
                 return new LoginUserCommandResponse() { TokenDTO = token };
             }
