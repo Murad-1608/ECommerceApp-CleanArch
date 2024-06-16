@@ -1,7 +1,9 @@
 ﻿using ECommerceApp.Application.Abstractions.Storage;
+using ECommerceApp.Application.Abstractions.Token;
 using ECommerceApp.Infrastructure.Enums;
 using ECommerceApp.Infrastructure.Services.Storage.Azure;
 using ECommerceApp.Infrastructure.Services.Storage.Local;
+using ECommerceApp.Infrastructure.Services.Token;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ECommerceApp.Infrastructure
@@ -19,6 +21,11 @@ namespace ECommerceApp.Infrastructure
                     services.AddScoped<IStorage, AzureStorage>();
                     break;
             }
+        }
+
+        public static void AddTokenService(this IServiceCollection services)
+        {
+            services.AddScoped<ITokenHandler, TokenHandler>();
         }
     }
 }

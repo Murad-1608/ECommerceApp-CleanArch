@@ -12,16 +12,16 @@ namespace ECommerceApp.Application.Features.Commands.AppUserCommands.CreateUser
         {
             _userManager = userManager;
         }
-
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
         {
-            var result = await _userManager.CreateAsync(new AppUser
+            AppUser user = new()
             {
-                Id = new Guid().ToString(),
+                Id = Guid.NewGuid().ToString(),
                 Email = request.Email,
                 UserName = request.UserName
 
-            }, request.Password);
+            };
+            var result = await _userManager.CreateAsync(user, request.Password);
 
             if (result.Succeeded)
                 return new CreateUserCommandResponse() { Successeded = true, Message = "Created user" };

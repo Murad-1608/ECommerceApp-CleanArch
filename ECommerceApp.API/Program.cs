@@ -22,6 +22,7 @@ builder.Services.AddPersistenceServices();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTokenService();
 
 builder.Services.AddAuthentication("Admin").AddJwtBearer(opt =>
 {
@@ -35,9 +36,7 @@ builder.Services.AddAuthentication("Admin").AddJwtBearer(opt =>
         ValidIssuer = builder.Configuration["Token:Issuer"],
         ValidAudience = builder.Configuration["Token:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"])) 
-
     };
-
 });
 
 
