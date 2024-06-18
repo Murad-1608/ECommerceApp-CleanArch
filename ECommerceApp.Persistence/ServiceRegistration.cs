@@ -1,7 +1,9 @@
 ﻿using ECommerceApp.Application.Repositories;
+using ECommerceApp.Application.Services;
 using ECommerceApp.Domain.Entities.Identity;
 using ECommerceApp.Persistence.Contexts;
 using ECommerceApp.Persistence.Repositories;
+using ECommerceApp.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,6 +30,8 @@ namespace ECommerceApp.Persistence
             services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
 
         }
     }

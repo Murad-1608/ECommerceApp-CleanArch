@@ -1,6 +1,7 @@
 ﻿using ECommerceApp.Application.Abstractions.Token;
 using ECommerceApp.Application.DTOs;
 using ECommerceApp.Application.Exceptions;
+using ECommerceApp.Application.Services;
 using ECommerceApp.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -9,38 +10,19 @@ namespace ECommerceApp.Application.Features.Commands.AppUserCommands.LoginUser
 {
     public sealed class LoginUserCommandHandler : IRequestHandler<LoginUserCommandRequest, LoginUserCommandResponse>
     {
-        private readonly SignInManager<AppUser> signInManager;
-        private readonly UserManager<AppUser> userManager;
-        private readonly ITokenHandler _tokenHandler;
-
-        public LoginUserCommandHandler(UserManager<AppUser> userManager,
-                                       SignInManager<AppUser> signInManager,
-                                       ITokenHandler tokenHandler)
+        private readonly IAuthService _authService;
+        public LoginUserCommandHandler(IAuthService authService)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-            _tokenHandler = tokenHandler;
+            _authService = authService;
         }
 
         public async Task<LoginUserCommandResponse> Handle(LoginUserCommandRequest request, CancellationToken cancellationToken)
         {
-            var user = await userManager.FindByNameAsync(request.EmailOrUserName);
-            if (user == null)
-                user = await userManager.FindByEmailAsync(request.EmailOrUserName);
-
-            if (user == null)
-                throw new NotFoundUserException("User name or password invalid");
-
-            var check = await signInManager.CheckPasswordSignInAsync(user, request.Password, false);
-
-            if (check.Succeeded)
+            var token = await _authService.LoginAsync(request.EmailOrUserName, request.Password, 10);
+            return new()
             {
-                TokenDTO token = _tokenHandler.CreateAccessToken(60);
-
-                return new LoginUserCommandResponse() { TokenDTO = token };
-            }
-            throw new UnauthorizedAccessException();
-
+                TokenDTO = token
+            };
         }
     }
 }
