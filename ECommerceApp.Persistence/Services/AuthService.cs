@@ -89,5 +89,21 @@ namespace ECommerceApp.Persistence.Services
             }
             throw new UnauthorizedAccessException();
         }
+
+        public async Task<TokenDTO> RefleshTokenLogin(string refleshToken)
+        {
+            AppUser? user = _userManager.Users.FirstOrDefault(x => x.RefleshToken == refleshToken);
+
+            if (user != null && user.RefleshTokenEndDate > DateTime.UtcNow)
+            {
+                var token = _tokenHandler.CreateAccessToken(25);
+
+                await _userService.UpdateRefleshToken(token.RefleshToken, user, token.Expiration, 50);
+
+                return token;
+            }
+
+            throw new NotFoundUserException("User not found");
+        }
     }
 }

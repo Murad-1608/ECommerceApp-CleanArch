@@ -8,5 +8,6 @@ namespace ECommerceApp.Application.Services
     {
         Task<CreateUserCommandResponse> CreateAsync(CreateUserDTO Dto);
         Task UpdateRefleshToken(string refleshToken, AppUser user, DateTime AccessTokenDate, int refleshTokenLifeTime);
+
     }
 }

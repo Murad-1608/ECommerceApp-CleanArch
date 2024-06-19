@@ -1,5 +1,6 @@
 ﻿using ECommerceApp.Application.Features.Commands.AppUserCommands.GoogleLogin;
 using ECommerceApp.Application.Features.Commands.AppUserCommands.LoginUser;
+using ECommerceApp.Application.Features.Commands.AppUserCommands.RefleshTokenLogin;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,9 +34,11 @@ namespace ECommerceApp.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> RefleshTokenLogin()
+        public async Task<IActionResult> RefleshTokenLogin(RefleshTokenLoginCommandRequest request)
         {
+            var response = await _mediator.Send(request);
 
+            return Ok(response);
         }
     }
 }
